@@ -1,0 +1,49 @@
+/*  marge */
+* {
+  margin: 0;
+  padding: 0;
+}
+.margTitre {
+  margin-top: 130px;
+}
+
+/* hauteur */
+.slider {
+  height: 350px;
+}
+
+/* largeur */
+.larg100 {
+  width: 100%;
+}
+
+/* bordure */
+
+.bordureProfil {
+  border: 3mm ridge#a6b622ff;
+}
+
+/* back */
+
+.backSkill {
+  background-image: url("../assets/trou.jpg");
+  opacity: 0.5;
+  height: 400px;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.backSlide {
+  background-image: url("../assets/roche.jpg");
+  height: 400px;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+/* COLOR */
+.backColor {
+  background-color: #dc3545;
+}
+.textSlide {
+  color: #404020;
+}
+/* hjhjfdsjdjiijiiuuhuhfffff */
