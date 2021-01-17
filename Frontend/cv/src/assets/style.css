@@ -12,7 +12,7 @@
   height: 350px;
 }
 .paragraphe {
-  height: 380px;
+  height: 400px;
 }
 .foot {
   height: 500px;
@@ -29,6 +29,12 @@
   width: 40%;
 }
 
+/* cube */
+.cube {
+  width: 80px;
+  height: 80px;
+}
+
 /* bordure */
 
 .bordureProfil {
@@ -39,11 +45,28 @@
 
 .backSkill {
   background-image: url("../assets/trou.jpg");
-  opacity: 0.5;
-  height: 400px;
+
+  animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+}
+
+@keyframes rotate-vert-center {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+
+.backSkillSize {
+  height: 500px;
   width: 100%;
   background-size: 100% 100%;
 }
+
 .backSlide {
   background-image: url("../assets/roche.jpg");
   height: 420px;
@@ -53,6 +76,9 @@
 
 /* COLOR */
 .backFooter {
+  background-color: #748928ff;
+}
+.btnCarte {
   background-color: #748928ff;
 }
 .textSlide {

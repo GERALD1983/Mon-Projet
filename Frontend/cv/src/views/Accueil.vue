@@ -1,7 +1,7 @@
 <template>
   <div>
     <MaPage />
-    <Contenu />
+    <Contenu class="Cont" />
     <Foot />
   </div>
 </template>
@@ -17,6 +17,20 @@ export default {
     Contenu,
     Foot,
   },
+  /*
+  data() {
+    return {
+      nav: document.querySelector(".Cont"),
+    };
+  },
+  methods: {
+    Scrolling: window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        this.nav.classList.add("scroll");
+      }
+    }),
+  },
+  */
 };
 </script>
 

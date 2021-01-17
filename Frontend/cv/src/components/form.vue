@@ -3,7 +3,7 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <div class="text-white d-flex justify-content-around">
         <b-form-group
-          class="largInput"
+          class="boxC largInput"
           id="input-group-1"
           label="Email address:"
           label-for="input-1"
@@ -18,7 +18,7 @@
         </b-form-group>
 
         <b-form-group
-          class="largInput"
+          class=" boxE largInput"
           id="input-group-2"
           label="Your Name:"
           label-for="input-2"
@@ -33,7 +33,7 @@
       </div>
       <div class="text-white d-flex justify-content-around">
         <b-form-group
-          class="largInput"
+          class="boxD largInput"
           id="input-group-4"
           label="Message:"
           label-for="input-4"
@@ -48,7 +48,7 @@
         </b-form-group>
 
         <b-form-group
-          class="largInput"
+          class="boxF largInput"
           id="input-group-5"
           label="Your Phone:"
           label-for="input-5"
@@ -62,8 +62,8 @@
         </b-form-group>
       </div>
       <div class="d-flex justify-content-around">
-        <b-button class="colorSubmit" type="submit">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button class="para2 colorSubmit" type="submit">Submit</b-button>
+        <b-button class="para2" type="reset" variant="danger">Reset</b-button>
       </div>
     </b-form>
     <b-card class="mt-3 displayNone" header="Form Data Result">
@@ -108,3 +108,53 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.boxC {
+  animation: 1s linear boxC;
+}
+@keyframes boxC {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.boxD {
+  animation: 1s linear boxD;
+}
+@keyframes boxD {
+  0% {
+    opacity: 0;
+    transform: translateX(80%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.boxE {
+  animation: 1s linear boxE;
+}
+@keyframes boxE {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.boxF {
+  animation: 1s linear boxF;
+}
+@keyframes boxF {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
