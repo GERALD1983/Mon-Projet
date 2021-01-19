@@ -4,7 +4,7 @@
       class="pb-5 mx-5 px-5 d-flex flex-wrap justify-content-around align-items-center "
     >
       <div v-for="(image, id) in images" :key="id" class=" my-5 col-8 col-lg-4">
-        <div class="bordureCarte card  shadow-lg">
+        <div class="bordureCarte ombreCarte card ">
           <img
             class="hautImg card-img-top"
             :src="image.link"
@@ -83,5 +83,17 @@ export default {
 }
 .bordureCarte {
   border: 0.5mm ridge#a6b622ff !important;
+}
+.ombreCarte:hover {
+  box-shadow: 0 0 0 0 #748928ff;
+  animation: pulse 1.3s infinite;
+}
+.ombreCarte {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 18px rgba(0, 0, 0, 0.01);
+  }
 }
 </style>

@@ -9,7 +9,7 @@
 
 /* hauteur */
 .slider {
-  height: 350px;
+  height: 500px;
 }
 .paragraphe {
   height: 400px;
@@ -46,8 +46,7 @@
 .backSkill {
   background-image: url("../assets/trou.jpg");
 
-  animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
+  animation: rotate-vert-center 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
 
 @keyframes rotate-vert-center {
@@ -69,7 +68,7 @@
 
 .backSlide {
   background-image: url("../assets/roche.jpg");
-  height: 420px;
+  height: 550px;
   width: 100%;
   background-size: 100% 100%;
 }

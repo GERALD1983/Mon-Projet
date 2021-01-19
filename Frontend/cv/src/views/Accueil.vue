@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="page">
     <MaPage />
-    <Contenu class="Cont" />
+    <Contenu />
     <Foot />
   </div>
 </template>
@@ -17,20 +17,19 @@ export default {
     Contenu,
     Foot,
   },
-  /*
+
   data() {
-    return {
-      nav: document.querySelector(".Cont"),
-    };
+    return {};
   },
-  methods: {
-    Scrolling: window.addEventListener("scroll", () => {
+  mounted() {
+    const page = document.getElementById("page");
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 500) {
-        this.nav.classList.add("scroll");
+        page.classList.add("scroll");
+        console.log("scroll");
       }
-    }),
+    });
   },
-  */
 };
 </script>
 
