@@ -2,7 +2,7 @@
   <div class="bg-white">
     <div>
       <div class="  d-flex justify-content-center align-items-center">
-        <h2 id="objectif" class="objectif invisible py-5">
+        <h2 id="objectif" class="objectif invisible nonvis py-5">
           Mes Objectifs
         </h2>
       </div>
@@ -10,17 +10,11 @@
       <div
         class="d-flex flex-column justify-content-center paragraphe bg-secondary"
       >
-        <h3
-          data-visibleClass="para1"
-          class="objectif invisible paratop1 text-white "
-        >
+        <h3 class="objectif invisible paratop1 text-white ">
           " Aime développer produire dans le web rester connecté à la
           technologie. "
         </h3>
-        <h3
-          data-visibleClass="para2"
-          class="objectif invisible paratop2 text-white"
-        >
+        <h3 class="objectif invisible paratop2 text-white">
           " Vous rendre de la qualité , du travail bien fait , un service
           optimiser. "
         </h3>
@@ -70,9 +64,9 @@
       </div>
     </div>
     <div class="d-flex justify-content-center align-items-center">
-      <h2 class="boxt mb-0 pb-5 pt-5">Mes projets</h2>
+      <h2 id="titreProjet" class="invisible mb-0 pb-5 pt-5">Mes projets</h2>
     </div>
-    <div>
+    <div id="carte" class="invisible">
       <Carte />
     </div>
   </div>
@@ -88,6 +82,7 @@ export default {
     Carte,
   },
   mounted() {
+    /*
     let observer = new IntersectionObserver(
       function(observables) {
         observables.forEach(function(observable) {
@@ -96,9 +91,6 @@ export default {
             const element = observable.target;
 
             element.classList.remove("invisible");
-
-            element.classList.add(element.dataset.visibleClass);
-            console.log(element.dataset.visibleClass);
           }
         });
       },
@@ -126,13 +118,15 @@ export default {
       //para2.classList.add("para2");
     });
 */
-    /*
+
     const objectif = document.getElementById("objectif");
     const paratop1 = document.querySelector(".paratop1");
     const paratop2 = document.querySelector(".paratop2");
     const textPop = document.getElementById("textPop");
     const liste = document.getElementById("liste");
     const liste2 = document.getElementById("liste2");
+    const titProjet = document.getElementById("titreProjet");
+    const carte = document.getElementById("carte");
 
     window.addEventListener("scroll", () => {
       if (window.scrollY >= 0) {
@@ -160,8 +154,15 @@ export default {
         liste2.classList.remove("invisible");
         liste2.classList.add("para2");
       }
+      if (window.scrollY > 2000) {
+        titProjet.classList.remove("invisible");
+        titProjet.classList.add("boxt");
+      }
+      if (window.scrollY > 2200) {
+        carte.classList.remove("invisible");
+        carte.classList.add("para3");
+      }
     });
-    */
   },
 };
 </script>
@@ -178,6 +179,9 @@ export default {
 }
 .para2 {
   animation: 1.5s linear para2;
+}
+.para3 {
+  animation: 1s linear para3;
 }
 @keyframes boxt {
   0% {
@@ -211,6 +215,16 @@ export default {
   0% {
     opacity: 0;
     transform: translateY(200%);
+  }
+  100% {
+    visibility: hidden;
+    opacity: 1;
+  }
+}
+@keyframes para3 {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
   }
   100% {
     visibility: hidden;
