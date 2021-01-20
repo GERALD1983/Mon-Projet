@@ -43,6 +43,27 @@ export default {
   components: {
     Formulaire,
   },
+  /*
+    mounted() {
+    const competence = document.getElementById("competence");
+    const back = document.getElementById("back");
+    const logos = document.getElementById("logos");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 800) {
+        competence.classList.remove("invisible");
+        competence.classList.add("boxt");
+        console.log(window.length);
+      }
+      if (window.scrollY > 1000) {
+        back.classList.remove("invisible");
+        logos.classList.remove("invisible");
+        back.classList.add("backSkill");
+        logos.classList.add("logos");
+      }
+    });
+  },
+  */
 };
 </script>
 

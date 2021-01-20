@@ -30,13 +30,30 @@
         aria-label="Help"
       ></b-icon>
     </div>
-    <div class="larg100 mb-3 pl-3 d-flex justify-content-left">
+    <div
+      class="larg100 mb-3 pl-3 d-flex justify-content-left align-items-center"
+    >
       <img
+        @click="afficherMasquer()"
+        role="button"
         width="160px"
-        class=" justify-content-left bordureProfil rounded-circle ombre"
+        class="mr-3 justify-content-left bordureProfil rounded-circle ombre"
         src="../assets/photo1.jpg"
         alt="photo profil"
       />
+      <div id="dialPhoto" class="afficher">
+        <div class=" d-flex justify-content-center align-items-center">
+          <div class="miniFleche"></div>
+          <div
+            class="backDial bg-white d-flex justify-content-around align-items-center"
+          >
+            <h5 class="bg-white">
+              Hello ! Je m'appelle Gérald, je suis Développeur web Fullstack
+              Javascript . Bienvenue à vous !
+            </h5>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +79,18 @@ export default {
   mounted: function() {
     this.startRotation();
   },
+
   methods: {
+    afficherMasquer() {
+      if (
+        document.getElementById("dialPhoto").style.display == "none" ||
+        document.getElementById("dialPhoto").style.display == ""
+      ) {
+        document.getElementById("dialPhoto").style.display = "block";
+      } else {
+        document.getElementById("dialPhoto").style.display = "none";
+      }
+    },
     startRotation: function() {
       this.timer = setInterval(this.next, 5000);
     },
@@ -92,7 +120,23 @@ export default {
 .backSize {
   width: 15em;
 }
-.ombre {
+.backDial {
+  width: 20em;
+  height: 120px;
+  border-radius: 25px;
+}
+.miniFleche {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+
+  border-right: 10px solid white;
+}
+.afficher {
+  display: none;
+}
+.ombre:hover {
   box-shadow: 0 0 0 0 #748928ff;
   animation: pulse 1.3s infinite;
 }
