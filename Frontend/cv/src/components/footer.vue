@@ -2,11 +2,14 @@
   <div class="bg-white ">
     <div class="backFooter foot">
       <div>
-        <h3 class="para1 text-light pt-5 pb-3">Contact</h3>
+        <h3 id="contact" class="invisible text-light pt-5 pb-3">Contact</h3>
       </div>
 
       <div class="mb-5 mt-3 d-flex justify-content-center ">
-        <div class="para1 larg50 d-flex justify-content-between">
+        <div
+          id="logosReseaux"
+          class="invisible larg50 d-flex justify-content-between"
+        >
           <b-icon icon="facebook" font-scale="2"></b-icon>
           <b-icon icon="github" font-scale="2"></b-icon>
           <b-icon icon="linkedin" font-scale="2"></b-icon>
@@ -15,16 +18,16 @@
       </div>
       <div class="d-flex justify-content-around">
         <div class="d-flex flex-column justify-content-center text-light">
-          <h5 class="boxK">
+          <h5 id="boxK" class="invisible">
             <b-icon icon="house-door-fill"></b-icon> Adresse :
           </h5>
-          <p class="boxJ">3 rue de la gare</p>
-          <p class="boxI">REDANGE 57390</p>
-          <p class="boxH">
+          <p id="boxJ" class="invisible">3 rue de la gare</p>
+          <p id="boxI" class="invisible">REDANGE 57390</p>
+          <p id="boxH" class="invisible">
             <b-icon class="mr-2" icon="telephone-plus"></b-icon> Tel: 03 82 52
             26 42
           </p>
-          <p class="boxG">
+          <p id="boxG" class="invisible">
             <b-icon class="mr-2" icon="mailbox"></b-icon> Mail: dfggggfdgrr
           </p>
         </div>
@@ -43,27 +46,44 @@ export default {
   components: {
     Formulaire,
   },
-  /*
-    mounted() {
-    const competence = document.getElementById("competence");
-    const back = document.getElementById("back");
-    const logos = document.getElementById("logos");
+
+  mounted() {
+    const contact = document.getElementById("contact");
+    const logos = document.getElementById("logosReseaux");
+    const boxK = document.getElementById("boxK");
+    const boxJ = document.getElementById("boxJ");
+    const boxI = document.getElementById("boxI");
+    const boxH = document.getElementById("boxH");
+    const boxG = document.getElementById("boxG");
 
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 800) {
-        competence.classList.remove("invisible");
-        competence.classList.add("boxt");
-        console.log(window.length);
-      }
-      if (window.scrollY > 1000) {
-        back.classList.remove("invisible");
+      let scrollValue =
+        (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+
+      if (scrollValue > 0.94) {
+        contact.classList.remove("invisible");
+        contact.classList.add("para1");
+
         logos.classList.remove("invisible");
-        back.classList.add("backSkill");
-        logos.classList.add("logos");
+        logos.classList.add("para1");
+
+        boxK.classList.remove("invisible");
+        boxK.classList.add("boxK");
+
+        boxJ.classList.remove("invisible");
+        boxJ.classList.add("boxJ");
+
+        boxI.classList.remove("invisible");
+        boxI.classList.add("boxI");
+
+        boxH.classList.remove("invisible");
+        boxH.classList.add("boxH");
+
+        boxG.classList.remove("invisible");
+        boxG.classList.add("boxG");
       }
     });
   },
-  */
 };
 </script>
 

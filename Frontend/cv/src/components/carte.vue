@@ -1,39 +1,66 @@
 <template>
   <div>
+    <div>
+      <!--
     <div id="exemple">
       <div>
         <p>Tout contenu que vous voulez montrer aux utilisateurs.</p>
         <button @click="exemple()">Cliquez ici pour fermer la boîte</button>
       </div>
     </div>
-    <div
-      class="pb-5 mx-5 px-5 d-flex flex-wrap justify-content-around align-items-center "
-    >
-      <div v-for="(image, id) in images" :key="id" class=" my-5 col-8 col-lg-4">
-        <div class="bordureCarte ombreCarte card ">
+    -->
+
+      <div
+        class="pb-5 mx-5 px-5 d-flex flex-wrap justify-content-around align-items-center "
+      >
+        <modale
+          id="modale"
+          v-bind:revele="revele"
+          v-bind:toggleModale="toggleModale"
+        >
+          <!--
           <img
-            role="button"
-            @click="exemple()"
-            class="hautImg card-img-top"
-            :src="image.link"
-            alt="photo-monSite"
+            @mouseleave="clearDom()"
+            :id="imageModale"
+            :src="imageModale"
+            alt=""
           />
-          <div class="bg-secondary hautDivColor"></div>
-          <div class="card-body">
-            <h5 class="card-title">{{ image.nom }}</h5>
+          -->
+        </modale>
+        <div
+          v-for="(image, index) in images"
+          :key="index"
+          class=" my-5 col-8 col-lg-4"
+        >
+          <div class="bordureCarte ombreCarte card ">
+            <div>
+              <img
+                @mouseenter="insertImage(image)"
+                role="button"
+                @click="toggleModale(), clearDom()"
+                class="hautImg card-img-top"
+                :src="image.link"
+                alt="photo-monSite"
+              />
+            </div>
 
-            <button @click="afficherMasquer(image)" class="btn btn-secondary">
-              Détails
-            </button>
+            <div class="bg-secondary hautDivColor"></div>
+            <div class="card-body">
+              <h5 class="card-title">{{ image.nom }}</h5>
 
-            <p :id="image.id" class="nonAfficher pt-3 card-text"></p>
+              <button @click="afficherMasquer(image)" class="btn btn-secondary">
+                Détails
+              </button>
 
-            <button
-              class="ml-3 btn btnCarte btn-secondary"
-              @click="clickUrl(image)"
-            >
-              Voir Projet
-            </button>
+              <p :id="image.id" class="nonAfficher pt-3 card-text"></p>
+
+              <button
+                class="ml-3 btn btnCarte btn-secondary"
+                @click="clickUrl(image)"
+              >
+                Voir Projet
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -42,10 +69,16 @@
 </template>
 
 <script>
+import Modale from "./modaleImage.vue";
 export default {
   name: "carte",
+  components: {
+    modale: Modale,
+  },
   data() {
     return {
+      imageModale: localStorage.getItem("imageMod"),
+      revele: false,
       images: [
         {
           id: 1,
@@ -97,26 +130,49 @@ export default {
           id: 5,
           link: require("../assets/orinoco400.jpg"),
           nom: "E-commerce Orinico",
-          description: "descrip4",
+          description: `Site E-commerce Orinoco version Mvp.
+          Ceci est l'application e-commerce front-end réaliser par mes soins à l'aide
+          du Framework boostrap et Javascript vanilla.
+          Le code est commenté et utilise des promises en requête Ajax sous forme de fonction.
+          Ce projet a été fait dans le cadre du projet 5 d'Openclassroom.
+          Le backent été fourni ainsi que les informations et les différentes données affichaient en front-end.`,
           url: "https://github.com/GERALD1983/FrontEndP5",
         },
         {
           id: 6,
           link: require("../assets/sopecocko400.jpg"),
           nom: "Critiqe Gastronomique",
-          description: "descrip5",
+          description: `Backend projet6 api d'ajout de vos sauces, likes et dislikes.
+          Ceci est une application de critique gastronomique pour une agence de sauces Sopekocko
+          le côté front-end était ici déjà fourni.
+          Ici j'ai donc réalisé le back end de l'application en Api rest avec Nodejs et Express.
+          Les règles de sécurité Owasp ont été également mis en place afin de sécuriser
+          l'application et la navigation de l'utilisateur.
+          Ce projet a été réalisé dans le cadre du projet 6 d'openclassroom.`,
           url: "https://github.com/GERALD1983/Projet6_SoPekocko",
         },
         {
           id: 7,
           link: require("../assets/groupomania400.jpg"),
           nom: "Réseau social",
-          description: "descrip5",
+          description: `Conception Backend et Frontend
+          en base de donnee Mysql pour le projet Groupomania.
+          Ceci est le dernier projet de ma formation où j'ai développé entièrement
+          l'application d'A à Z du Back au Front.
+          Ce site à été réalisé en Node Js Express avec une api rest et les
+          règles de sécurité Owasp en Back-end.
+          Pour ce qui du Front-END les techniques utilisés sont: boostrap HTML Css et Vue .js.
+          Le projet Groupomania est un réseau social d'entreprise qui permet de partager
+          des postes textes, vidéos, images.
+          Un admin peut également modérer le site, l'utilisateur peut modifier ou supprimer son profil.`,
           url: "https://github.com/GERALD1983/Projet7_Reseau_social_entreprise",
         },
       ],
     };
   },
+  mounted() {},
+  created() {},
+
   methods: {
     afficherMasquer(image) {
       if (
@@ -134,12 +190,29 @@ export default {
     clickUrl(image) {
       window.open(`${image.url}`);
     },
+    toggleModale() {
+      //
+      // localStorage.setItem("imageMod", image.link);
+      this.revele = !this.revele;
+    },
+    insertImage(image) {
+      localStorage.setItem("imageMod", `${image.link}`);
+    },
+
+    clearDom(imageModale) {
+      // document.getElementById(`${this.imageModale}`).removeAttribute("src");
+      const name = `<img src="${imageModale}" />`;
+      document.getElementById("modale").innerHTML = name; // affiche l'alerte
+    },
+
+    /*
     exemple() {
       document.getElementById("exemple").style.visibility =
         document.getElementById("exemple").style.visibility == "visible"
           ? "hidden"
           : "visible";
     },
+    */
   },
 };
 </script>
@@ -170,6 +243,8 @@ export default {
     box-shadow: 0 0 0 18px rgba(0, 0, 0, 0.01);
   }
 }
+
+/* 
 #exemple {
   visibility: hidden;
   position: absolute;
@@ -201,4 +276,5 @@ export default {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
+*/
 </style>
