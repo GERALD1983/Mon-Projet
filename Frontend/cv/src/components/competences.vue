@@ -7,14 +7,14 @@
     </div>
 
     <div
-      id="back"
+      id="animback"
       class=" backSkillSize invisible slider d-flex justify-content-center"
     >
       <div
         class="backModal efface col-md-8 d-flex flex-wrap justify-content-center align-items-center "
       ></div>
       <div
-        id="logos"
+        id="animlogos"
         class="invisible col-md-8 d-flex flex-wrap justify-content-center align-items-center "
       >
         <img
@@ -176,19 +176,18 @@ export default {
   },
   mounted() {
     const competence = document.getElementById("competence");
-    const back = document.getElementById("back");
-    const logos = document.getElementById("logos");
+    const back = document.getElementById("animback");
+    const logos = document.getElementById("animlogos");
 
     window.addEventListener("scroll", () => {
       if (window.scrollY > 800) {
         competence.classList.remove("invisible");
         competence.classList.add("boxt");
-        console.log(window.length);
-      }
-      if (window.scrollY > 1000) {
+
         back.classList.remove("invisible");
-        logos.classList.remove("invisible");
         back.classList.add("backSkill");
+
+        logos.classList.remove("invisible");
         logos.classList.add("logos");
       }
     });
@@ -216,6 +215,24 @@ export default {
     transform: translateY(150%);
   }
   100% {
+    opacity: 1;
+  }
+}
+.backSkill {
+  background-image: url("../assets/trou.jpg");
+
+  animation: rotate-vert-center 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+@keyframes rotate-vert-center {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
     opacity: 1;
   }
 }

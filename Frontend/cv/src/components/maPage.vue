@@ -1,6 +1,7 @@
 <template>
   <div
-    class="slider backSlide d-flex flex-column justify-content-between align-items-between"
+    id="backMaPage"
+    class="slider backSlide backSlideSize d-flex flex-column justify-content-between align-items-between"
   >
     <div
       class="larg100 textSlide margTitre d-flex justify-content-around align-items-center"
@@ -76,6 +77,7 @@ export default {
       timer: null,
     };
   },
+  created() {},
   mounted: function() {
     this.startRotation();
   },
@@ -102,6 +104,38 @@ export default {
 
     next: function() {
       this.currentNumber += 1;
+      if (this.currentNumber == 0) {
+        document.getElementById("backMaPage").classList.add("backSlide");
+      }
+
+      if (this.currentNumber == 1) {
+        document.getElementById("backMaPage").classList.remove("backSlide");
+        document.getElementById("backMaPage").classList.add("backSlide1");
+      }
+      if (this.currentNumber == 2) {
+        document.getElementById("backMaPage").classList.remove("backSlide1");
+        document.getElementById("backMaPage").classList.add("backSlide2");
+      }
+      if (this.currentNumber == 3) {
+        document.getElementById("backMaPage").classList.remove("backSlide2");
+        document.getElementById("backMaPage").classList.add("backSlide3");
+      }
+      if (this.currentNumber == 4) {
+        document.getElementById("backMaPage").classList.remove("backSlide3");
+        document.getElementById("backMaPage").classList.add("backSlide4");
+      }
+      if (this.currentNumber == 5) {
+        document.getElementById("backMaPage").classList.remove("backSlide4");
+        document.getElementById("backMaPage").classList.add("backSlide5");
+      }
+      if (this.currentNumber == 6) {
+        document.getElementById("backMaPage").classList.remove("backSlide5");
+        document.getElementById("backMaPage").classList.add("backSlide6");
+      }
+      if (this.currentNumber > 6) {
+        this.currentNumber = 0;
+        document.getElementById("backMaPage").classList.remove("backSlide6");
+      }
     },
     prev: function() {
       this.currentNumber -= 1;
@@ -117,6 +151,27 @@ export default {
 </script>
 
 <style scoped>
+.backSlide {
+  background-image: url("../assets/roche.jpg");
+}
+.backSlide1 {
+  background-image: url("../assets/js.jpg");
+}
+.backSlide2 {
+  background-image: url("../assets/ecole.jpg");
+}
+.backSlide3 {
+  background-image: url("../assets/cerveau.jpg");
+}
+.backSlide4 {
+  background-image: url("../assets/raw.jpg");
+}
+.backSlide5 {
+  background-image: url("../assets/matrice.jpeg");
+}
+.backSlide6 {
+  background-image: url("../assets/boreale.jpg");
+}
 .backSize {
   width: 15em;
 }

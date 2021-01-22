@@ -129,6 +129,10 @@ export default {
     const carte = document.getElementById("carte");
 
     window.addEventListener("scroll", () => {
+      let scrollValue =
+        (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+      console.log(scrollValue);
+
       if (window.scrollY >= 0) {
         console.log(window.scrollY);
       }

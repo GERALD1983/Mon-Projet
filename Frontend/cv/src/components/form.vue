@@ -3,8 +3,8 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <div class="text-white d-flex justify-content-around">
         <b-form-group
-          class="boxC largInput"
-          id="input-group-1"
+          class="invisible largInput"
+          id="boxC"
           label="Email address:"
           label-for="input-1"
         >
@@ -18,8 +18,8 @@
         </b-form-group>
 
         <b-form-group
-          class=" boxE largInput"
-          id="input-group-2"
+          class=" invisible largInput"
+          id="boxE"
           label="Your Name:"
           label-for="input-2"
         >
@@ -33,8 +33,8 @@
       </div>
       <div class="text-white d-flex justify-content-around">
         <b-form-group
-          class="boxD largInput"
-          id="input-group-4"
+          class="invisible largInput"
+          id="boxD"
           label="Message:"
           label-for="input-4"
         >
@@ -48,8 +48,8 @@
         </b-form-group>
 
         <b-form-group
-          class="boxF largInput"
-          id="input-group-5"
+          class="invisible largInput"
+          id="boxF"
           label="Your Phone:"
           label-for="input-5"
         >
@@ -62,8 +62,12 @@
         </b-form-group>
       </div>
       <div class="d-flex justify-content-around">
-        <b-button class="para2 colorSubmit" type="submit">Submit</b-button>
-        <b-button class="para2" type="reset" variant="danger">Reset</b-button>
+        <b-button id="sub" class="invisible colorSubmit" type="submit"
+          >Submit</b-button
+        >
+        <b-button id="res" class="invisible" type="reset" variant="danger"
+          >Reset</b-button
+        >
       </div>
     </b-form>
     <b-card class="mt-3 displayNone" header="Form Data Result">
@@ -85,6 +89,39 @@ export default {
       },
       show: true,
     };
+  },
+  mounted() {
+    const boxC = document.getElementById("boxC");
+    const boxD = document.getElementById("boxD");
+    const boxE = document.getElementById("boxE");
+    const boxF = document.getElementById("boxF");
+    const sub = document.getElementById("sub");
+    const res = document.getElementById("res");
+
+    window.addEventListener("scroll", () => {
+      let scrollValue =
+        (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+
+      if (scrollValue > 0.94) {
+        boxC.classList.remove("invisible");
+        boxC.classList.add("boxC");
+
+        boxD.classList.remove("invisible");
+        boxD.classList.add("boxD");
+
+        boxE.classList.remove("invisible");
+        boxE.classList.add("boxE");
+
+        boxF.classList.remove("invisible");
+        boxF.classList.add("boxF");
+
+        sub.classList.remove("invisible");
+        sub.classList.add("para2");
+
+        res.classList.remove("invisible");
+        res.classList.add("para2");
+      }
+    });
   },
   methods: {
     onSubmit(event) {
