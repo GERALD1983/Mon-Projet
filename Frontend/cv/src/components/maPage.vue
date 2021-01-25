@@ -7,6 +7,8 @@
       class="larg100 textSlide margTitre d-flex justify-content-around align-items-center"
     >
       <b-icon
+        @mouseenter="stopRotation()"
+        @mouseleave="startRotation()"
         @click="prev"
         class="bg-white"
         role="button"
@@ -22,6 +24,8 @@
       </div>
 
       <b-icon
+        @mouseenter="stopRotation()"
+        @mouseleave="startRotation()"
         @click="next"
         class="bg-white "
         role="button"
@@ -103,42 +107,81 @@ export default {
     },
 
     next: function() {
+      let backMaPage = document.getElementById("backMaPage");
       this.currentNumber += 1;
+
       if (this.currentNumber == 0) {
-        document.getElementById("backMaPage").classList.add("backSlide");
+        backMaPage.classList.add("backSlide");
       }
 
       if (this.currentNumber == 1) {
-        document.getElementById("backMaPage").classList.remove("backSlide");
-        document.getElementById("backMaPage").classList.add("backSlide1");
+        backMaPage.classList.remove("backSlide");
+        backMaPage.classList.add("backSlide1");
       }
       if (this.currentNumber == 2) {
-        document.getElementById("backMaPage").classList.remove("backSlide1");
-        document.getElementById("backMaPage").classList.add("backSlide2");
+        backMaPage.classList.remove("backSlide1");
+        backMaPage.classList.add("backSlide2");
       }
       if (this.currentNumber == 3) {
-        document.getElementById("backMaPage").classList.remove("backSlide2");
-        document.getElementById("backMaPage").classList.add("backSlide3");
+        backMaPage.classList.remove("backSlide2");
+        backMaPage.classList.add("backSlide3");
       }
       if (this.currentNumber == 4) {
-        document.getElementById("backMaPage").classList.remove("backSlide3");
-        document.getElementById("backMaPage").classList.add("backSlide4");
+        backMaPage.classList.remove("backSlide3");
+        backMaPage.classList.add("backSlide4");
       }
       if (this.currentNumber == 5) {
-        document.getElementById("backMaPage").classList.remove("backSlide4");
-        document.getElementById("backMaPage").classList.add("backSlide5");
+        backMaPage.classList.remove("backSlide4");
+        backMaPage.classList.add("backSlide5");
       }
       if (this.currentNumber == 6) {
-        document.getElementById("backMaPage").classList.remove("backSlide5");
-        document.getElementById("backMaPage").classList.add("backSlide6");
+        backMaPage.classList.remove("backSlide5");
+        backMaPage.classList.add("backSlide6");
       }
       if (this.currentNumber > 6) {
         this.currentNumber = 0;
-        document.getElementById("backMaPage").classList.remove("backSlide6");
+        backMaPage.classList.remove("backSlide6");
+        backMaPage.classList.add("backSlide");
       }
     },
     prev: function() {
+      let backMaPage = document.getElementById("backMaPage");
       this.currentNumber -= 1;
+
+      if (this.currentNumber == 0) {
+        backMaPage.classList.remove("backSlide1");
+        backMaPage.classList.add("backSlide");
+      }
+
+      if (this.currentNumber == 1) {
+        backMaPage.classList.remove("backSlide2");
+        backMaPage.classList.add("backSlide1");
+      }
+      if (this.currentNumber == 2) {
+        backMaPage.classList.remove("backSlide3");
+        backMaPage.classList.add("backSlide2");
+      }
+      if (this.currentNumber == 3) {
+        backMaPage.classList.remove("backSlide4");
+        backMaPage.classList.add("backSlide3");
+      }
+      if (this.currentNumber == 4) {
+        backMaPage.classList.remove("backSlide5");
+        backMaPage.classList.add("backSlide4");
+      }
+      if (this.currentNumber == 5) {
+        backMaPage.classList.remove("backSlide6");
+        backMaPage.classList.add("backSlide5");
+      }
+      if (this.currentNumber == 6) {
+        backMaPage.classList.remove("backSlide");
+        backMaPage.classList.add("backSlide6");
+      }
+      if (this.currentNumber < 0) {
+        this.currentNumber = 6;
+        backMaPage.classList.remove("backSlide");
+        backMaPage.classList.add("backSlide6");
+      }
     },
   },
 

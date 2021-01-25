@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+.stopMargPad {
+  margin: 0;
+  padding: 0;
+}
 .margTitre {
   margin-top: 130px;
 }
@@ -50,7 +54,6 @@
 }
 
 .backSlideSize {
-  background-image: url("../assets/roche.jpg");
   height: 550px;
   width: 100%;
   background-size: 100% 100%;
