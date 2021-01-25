@@ -13,34 +13,19 @@
       <div
         class="pb-5 mx-5 px-5 d-flex flex-wrap justify-content-around align-items-center "
       >
-        <modale
-          id="modale"
-          v-bind:revele="revele"
-          v-bind:toggleModale="toggleModale"
-        >
-          <!--
-          <img
-            @mouseleave="clearDom()"
-            :id="imageModale"
-            :src="imageModale"
-            alt=""
-          />
-          -->
-        </modale>
         <div
           v-for="(image, index) in images"
           :key="index"
           class=" my-5 col-8 col-lg-4"
         >
           <div class="bordureCarte ombreCarte card ">
-            <div>
+            <div @click="insertImage(image)">
               <img
-                @mouseenter="insertImage(image)"
+                @click="toggleModale()"
                 role="button"
-                @click="toggleModale(), clearDom()"
                 class="hautImg card-img-top"
                 :src="image.link"
-                alt="photo-monSite"
+                alt=""
               />
             </div>
 
@@ -63,6 +48,13 @@
             </div>
           </div>
         </div>
+        <modale
+          id="modale"
+          v-bind:revele="revele"
+          v-bind:toggleModale="toggleModale"
+        >
+          <img id="imageModale" src="../assets/resto400.jpg" alt="" />
+        </modale>
       </div>
     </div>
   </div>
@@ -195,16 +187,21 @@ export default {
       // localStorage.setItem("imageMod", image.link);
       this.revele = !this.revele;
     },
+
     insertImage(image) {
-      localStorage.setItem("imageMod", `${image.link}`);
+      localStorage.setItem("imageMod", image.link);
+      document.getElementById("imageModale").src = `${image.link}`;
+
+      console.log(image.link);
     },
 
+    /*
     clearDom(imageModale) {
       // document.getElementById(`${this.imageModale}`).removeAttribute("src");
       const name = `<img src="${imageModale}" />`;
       document.getElementById("modale").innerHTML = name; // affiche l'alerte
     },
-
+  */
     /*
     exemple() {
       document.getElementById("exemple").style.visibility =

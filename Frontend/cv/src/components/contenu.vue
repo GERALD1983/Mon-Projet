@@ -53,7 +53,7 @@
             </li>
             <br />
             <li>
-              - Où simplement afficher votre présence dan le monde digitale
+              - Où simplement afficher votre présence dans le monde digitale
             </li>
           </ul>
         </h5>
